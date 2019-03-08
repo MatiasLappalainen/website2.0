@@ -38,7 +38,7 @@ class SponsorsView extends PureComponent {
               </Columns>
               <Content hasTextAlign='centered'>
                 <Link className='link margin-1' to='/yrityksille'>
-                  Yhteistyöhon Digitin kanssa?
+                  Yhteistyöhön Digitin kanssa?
                 </Link>
               </Content >
             </Box>
