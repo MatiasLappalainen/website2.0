@@ -15,47 +15,52 @@ class SponsorsView extends PureComponent {
     const { sponsorList } = this.props
     return (
       <Tile isParent>
-        <Tile isChild render={
-          props => (
+        <Tile
+          isChild
+          render={props => (
             <Box {...props}>
-              <Title className='highlight-left-dark-red' >Yhteistyössä</Title>
+              <Title className='highlight-left-dark-red'>Yhteistyössä</Title>
               <Columns isCentered isMultiline>
-                {sponsorList && (
+                {sponsorList &&
                   sponsorList.map(sponsor => (
                     <Column
                       isSize={{ mobile: '1', default: '1/3' }}
                       key={sponsor.name}
-                      hasTextAlign='centered'>
+                      hasTextAlign='centered'
+                      className='logo-—wrapper'
+                    >
                       <ImageLink
                         name={sponsor.name}
                         link={sponsor.link}
                         imageUrl={sponsor.logo}
                         alt={sponsor.name}
+                        className='logo__centered'
                       />
                     </Column>
-                  ))
-                )}
+                  ))}
               </Columns>
               <Content hasTextAlign='centered'>
                 <Link className='link margin-1' to='/yrityksille'>
-                  Yhteistyöhon Digitin kanssa?
+                  Yhteistyöhön Digitin kanssa?
                 </Link>
-              </Content >
+              </Content>
             </Box>
-          )
-        } />
+          )}
+        />
       </Tile>
     )
   }
 }
 
 SponsorsView.propTypes = {
-  sponsorList: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    link: PropTypes.string.isRequired,
-    logo: PropTypes.string.isRequired,
-    weight: PropTypes.number
-  })),
+  sponsorList: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+      logo: PropTypes.string.isRequired,
+      weight: PropTypes.number
+    })
+  ),
   fetchSponsors: PropTypes.func.isRequired
 }
 
@@ -68,4 +73,7 @@ const mapDispatchToProps = dispatch => ({
   fetchSponsors: () => dispatch(sponsorActions.fetchSponsors())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SponsorsView)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SponsorsView)
